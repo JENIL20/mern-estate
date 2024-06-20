@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken'
 
 export const verifyUser = (req, res, next) => {
   // console.log("start");
-  const token = req.body.access_token
+  const token = req.cookies.access_token
+  console.log(token);
   if (!token) return next(errorHandler(401, "Unauthorisdfgsdfgzed"))
 
   try {

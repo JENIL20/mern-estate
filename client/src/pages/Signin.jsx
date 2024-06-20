@@ -28,19 +28,21 @@ export default function SignIn() {
       dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
+      console.log(res);
       const data = await res.json();
-      console.log(data);
       if (data.success === false) {
         dispatch(signInFailure(data.errmsg));
         alert(data.errmsg)
         return;
       }
       dispatch(signInSuccess(data));
+      console.log("nevigate thai rayoc hu ");
       navigate('/');
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -50,9 +52,9 @@ export default function SignIn() {
     if (currentUser) {
       navigate('/profile')
     }
-  })
+  }, [currentUser])
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-3  max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input

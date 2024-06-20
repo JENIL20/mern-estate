@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 import userrouter from './routes/user.route.js'
 import authrouter from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
+import cors from 'cors'
+
 dotenv.config();
 
 // console.log(process.env.MONGOURL);
@@ -19,7 +21,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
-
+app.use(cors())
 
 
 app.get("/", (req, res) => {
