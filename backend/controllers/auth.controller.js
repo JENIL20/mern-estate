@@ -31,7 +31,7 @@ export const signin = async (req, res, next) => {
     const { password: pass, ...rest } = validuser._doc
     console.log(validuser);
     return res
-      .cookie('access_cookie', token, { httpOnly: true, expires: new Date(Date.now() + 60 * 60) })
+      .cookie('access_token', token, { httpOnly: true, expires: new Date(Date.now() + 60 * 60) })
       .status(200)
       .json(rest)
 

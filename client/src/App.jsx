@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
-  },
+  }
 ]);
 
 export default function App() {
